@@ -1,0 +1,4 @@
+{
+    "AIServiceOption:Endpoint": "AZURE_AI_SERVICE_ENDPOINT",
+    "AIServiceOption:Key": "AZURE_AI_SERVICE_KEY"
+}
