@@ -13,15 +13,12 @@ public interface IDetectLanguageService
 public class DetectLanguageService : IDetectLanguageService
 {
     private readonly AIServiceOption _options;
-    private readonly ILogger _logger;
 
-    public DetectLanguageService(AIServiceOption options, ILogger<DetectLanguageService> logger)
+    public DetectLanguageService(AIServiceOption options)
     {
         ArgumentNullException.ThrowIfNull(options);
-        ArgumentNullException.ThrowIfNull(logger);
 
         _options = options;
-        _logger = logger;
     }
 
     public string GetLanguage(string text)
@@ -33,7 +30,6 @@ public class DetectLanguageService : IDetectLanguageService
 
         // Call the service to get the detected language
         DetectedLanguage detectedLanguage = client.DetectLanguage(text);
-        _logger.LogInformation("Detected language: {DetectedLanguageName}", detectedLanguage.Name);
         return detectedLanguage.Name;
     }
 }

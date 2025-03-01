@@ -30,7 +30,7 @@ var host = Host.CreateDefaultBuilder(args)
         services.AddSingleton<IDetectLanguageService>((sc) =>
         {
             var options = sc.GetRequiredService<IOptions<AIServiceOption>>().Value;
-            return new DetectLanguageService(options, sc.GetRequiredService<ILogger<DetectLanguageService>>());
+            return new DetectLanguageService(options);
         });
 
         services.AddTransient<UserInput>();
@@ -39,5 +39,3 @@ var host = Host.CreateDefaultBuilder(args)
         userInput!.Run();
     })
     .Build();
-
-host.Run();
